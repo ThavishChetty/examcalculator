@@ -1,0 +1,45 @@
+<!doctype html>
+<html dir="ltr">
+    <head>
+        <link rel="icon" href="{{url_for('static', filename='images/icons8-molecule-office-m-96.png')}}"> 
+
+        {% if title %}
+        <title>{{title}} - Exam Calculator</title>
+        {% else %}
+        <title>Exam Calculator</title>
+        {% endif %}
+        <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <!-- Header for Logo and Navigation -->
+                <img src="{{url_for('static', filename='images/beaker-svgrepo-com.svg')}}" alt="Logo" class="logo">
+                <nav class="primary-navigation" aria-label="Primary-Navigation">
+                    <ul>
+                        
+                        <li><a href="{{url_for('index')}}">Home</a></li>
+                        <li><a href="{{url_for('login')}}">Login</a></li>
+
+                    </ul>
+                </nav>
+            </header>
+            <h1 class="Openers">Hello, friend!</h1>
+            <hr>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class="Flashed-Messages">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            {% block content %} {% endblock %}
+
+            <footer> <!-- Copyrighht and social links -->
+                    <p>© Rhizomatic Designs. All rights reserved </p>
+            </footer>
+        </div>
+    </body>
+</html>
